@@ -13,6 +13,8 @@ const config=
         gameStart,
         gamePlay,
         gameQuestion,
+        failGame,
+        pass,
     ],
     physics: {
         default: 'arcade',
@@ -20,7 +22,7 @@ const config=
             gravity: {
                 y: 550
             },
-            // debug: true,
+            debug: true,
         },
     },
 }
