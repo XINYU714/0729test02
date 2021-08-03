@@ -1,1 +1,59 @@
-const gameQuestion={key:"gameQuestion",preload:function(){this.load.image("q0","src/q0.webp"),this.load.image("q1","src/q1.webp"),this.load.image("q2","src/q2.webp"),this.load.image("q3","src/q3.webp"),this.load.image("q4","src/q4.webp"),this.load.image("q1fail","src/q1fail.webp"),this.load.image("q1good","src/q1good.webp"),this.load.image("restartbtn","src/restartbtn.webp"),this.questioArr=[]},create:function(){var e=[{name:"q0",x:vw/2,y:vh/2},{name:"q1",x:vw/2,y:350},{name:"q2",x:vw/2,y:450},{name:"q3",x:vw/2,y:550},{name:"q4",x:vw/2,y:650}];for(let t=0;t<5;t++)this["q"+t]=this.add.image(e[t].x,e[t].y,e[t].name),this.questioArr.push(this["q"+t]),this["q"+t].setInteractive();this.q4.on("pointerdown",()=>{q1good=this.add.image(vw/2,vh/2,"q1good");let t=this.add.image(vw/2,650,"restartbtn");t.setInteractive(),t.on("pointerdown",()=>this.scene.start("gameStart"))});var t=t=>{t.on("pointerdown",()=>{q1fail=this.add.image(vw/2,vh/2,"q1fail");let t=this.add.image(vw/2,650,"restartbtn");t.setInteractive(),t.on("pointerdown",()=>this.scene.start("gameStart"))})};t(this.q3),t(this.q2),t(this.q1)},update:function(){}};
+const gameQuestion = {
+    key:'gameQuestion',
+ preload:function ()
+{
+    this.load.image('q0','src/q0.webp');
+    this.load.image('q1','src/q1.webp');
+    this.load.image('q2','src/q2.webp');
+    this.load.image('q3','src/q3.webp');
+    this.load.image('q4','src/q4.webp');
+    this.questioArr=[];
+},
+
+ create: function ()
+{
+    const question=
+    [
+        {name:'q0',x:vw/2,y:vh/2},
+        {name:'q1',x:vw/2,y:350},
+        {name:'q2',x:vw/2,y:450},
+        {name:'q3',x:vw/2,y:550},
+        {name:'q4',x:vw/2,y:650},
+    ]
+    for(let i=0;i<5;i++)
+    {
+        this['q'+ i] = this.add.image(question[i].x, question[i].y, question[i].name);
+        this.questioArr.push(this['q'+i]);
+        this['q'+ i].setInteractive();
+    }
+   this.q4.on('pointerdown',() => {
+    this.scene.start('pass')
+  }); 
+
+ const right=(GameObject)=>
+   {
+       GameObject.on('pointerdown',() =>{
+        this.scene.start('failGame')
+      }); 
+    }
+   right(this.q3);
+   right(this.q2);
+   right(this.q1);
+
+// this.q1.on('pointerdown',() => {
+//     this.scene.start('failGame')
+//   }); 
+},
+    // let mainBtn = this.add.image(vw / 2, vh / 2, 'mainBtn');
+        
+    //     mainBtn.setInteractive();
+    //     mainBtn.on('pointerdown', () => this.scene.start('gamePlay'))
+    
+
+
+ update: function()
+{
+
+}
+
+}
